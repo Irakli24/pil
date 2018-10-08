@@ -1,0 +1,42 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Log In</h1>
+    <form  #logForm="ngForm">
+
+    <div class="form-group">
+        <label for="email" >email</label>
+        <input type="text" class="form-control" id="email"
+               required
+               placeholder="email"
+               [(ngModel)] = "model.email" name="email"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Email is Required  !
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"  class="form-control" id="password"
+               required
+               placeholder="********"
+               [(ngModel)]="model.password" name="password"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Password is Required  !
+        </div>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-success" (click)="onLogin(model.email, model.password)" [disabled]="!logForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="logForm; logForm.reset()">Reset</button>
+      <hr>
+      <button class="btn btn-light" routerLink="../registration-form" (click)="onLoadSignUp()">Sign Up</button>
+
+
+    </form>
+  </div>
+</div>

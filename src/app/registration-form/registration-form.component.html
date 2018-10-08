@@ -1,0 +1,66 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Sing Up</h1>
+    <form  #regForm="ngForm">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               placeholder="name"
+               required
+               [(ngModel)] = "model.username" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Username is Required  !
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="email" >email</label>
+        <input type="text" class="form-control" id="email"
+               required
+               placeholder="email"
+               [(ngModel)] = "model.email" name="email"
+               #email="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Email is Required  !
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"  class="form-control" id="password"
+               required
+               placeholder="********"
+
+               [(ngModel)]="model.password" name="password">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Password is Required  !
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select class="form-control"  id="gender"
+                required
+                [(ngModel)]="model.gender" name="power">
+          <option *ngFor="let pow of gender" [value]="pow">{{pow}}</option>
+        </select>
+      </div>
+
+      <!--<button type="submit" class="btn btn-success"! (click)="onGet()">Get Servers</button>-->
+
+      <button type="submit" class="btn btn-success" (click)="onSave()" [disabled]="!regForm.form.valid">Save</button>
+      <button type="button" class="btn btn-default" (click)="regForm; regForm.reset()">Reset</button>
+
+    </form>
+
+  </div>
+</div>
